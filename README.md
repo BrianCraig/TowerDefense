@@ -8,4 +8,4 @@ you can play it live on http://briancraig.github.io/towerdefense, or you can dow
 TODO write instructions to download & run locally
 
 ##Documentation
-Full game wiki-style documentation is [Here](../blob/master/DOC.md)
+Full game wiki-style documentation is [Here](DOC.md)
