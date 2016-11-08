@@ -4,7 +4,7 @@ repository because it's main focus is to learn using Object oriented programming
 for the web.
 
 ## How to play
-you can play it live on http://briancraig.github.io/towerdefense, or you can download locally.
+you can play it live on http://briancraig.github.io/TowerDefense, or you can download locally.
 TODO write instructions to download & run locally
 
 ##Documentation
