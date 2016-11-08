@@ -16,7 +16,12 @@
 
   <!-- include spec files here... -->
   <script>
-      System.import('app/game/test.js').catch(function(err){ console.error(err); });
+      // Jasmine Workaround for async module loading
+      window.jasmineWinOnload = window.onload
+      window.onload = undefined
+      System.import('app/game/test.js').catch(function(err){ console.error(err); }).then(function(){
+        window.jasmineWinOnload()
+      });
   </script>
 
 </head>
