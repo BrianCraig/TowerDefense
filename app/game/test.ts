@@ -2,7 +2,14 @@
 import StandardZombie from './enemy/standardzombie'
 import SimpleTower from './tower/simpletower'
 
-describe("testing enemies", ()=>{
+import GameMap from './map/map'
+import FocusChunk from './map/focuschunk'
+import PathChunk from './map/pathchunk'
+import TowerChunk from './map/towerchunk'
+import CastleChunk from './map/castlechunk'
+import Dir from './directions'
+
+describe("Enemies", ()=>{
   describe("standard zombie", ()=>{
     let z = new StandardZombie()
     it("initial live", () => {
@@ -17,7 +24,7 @@ describe("testing enemies", ()=>{
   })
 })
 
-describe("testing towers", ()=>{
+describe("Towers", ()=>{
   describe("simple tower", ()=>{
     let t = new SimpleTower()
     it("0.2s attack interval", () => {
@@ -32,7 +39,7 @@ describe("testing towers", ()=>{
   })
 })
 
-describe("testing mechanics", ()=>{
+describe("Fight mechanics", ()=>{
   describe("simple towers vs standard zombie", ()=>{
     let z = new StandardZombie()
     let t = new SimpleTower()
@@ -49,5 +56,24 @@ describe("testing mechanics", ()=>{
       t.attack(z);
       expect(z.isAlive()).toBe(false);
     })
+  })
+})
+
+describe("Maps", ()=>{
+  let m = new GameMap(3, 3)
+  m.add(new FocusChunk(Dir.East))
+  m.add(new PathChunk(Dir.East))
+  m.add(new PathChunk(Dir.South))
+
+  m.add(new TowerChunk())
+  m.add(new TowerChunk())
+  m.add(new PathChunk(Dir.South))
+
+  m.add(new TowerChunk())
+  m.add(new TowerChunk())
+  m.add(new CastleChunk())
+
+  it("should be ready", ()=>{
+    expect(m.isReady()).toBeTruthy()
   })
 })
