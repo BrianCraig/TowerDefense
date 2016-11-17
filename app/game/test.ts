@@ -8,6 +8,8 @@ import PathChunk from './map/pathchunk'
 import TowerChunk from './map/towerchunk'
 import CastleChunk from './map/castlechunk'
 import Dir from './directions'
+import Game from './game'
+import BasicRoundGenerator from './rounds/basicroundgenerator'
 
 describe("Enemies", ()=>{
   describe("standard zombie", ()=>{
@@ -75,5 +77,24 @@ describe("Maps", ()=>{
 
   it("should be ready", ()=>{
     expect(m.isReady()).toBeTruthy()
+  })
+})
+
+describe("A Game", ()=>{
+  beforeEach(()=>{
+    let map = new GameMap(5,5)
+    let rgen = new BasicRoundGenerator()
+    this.g = new Game(map, rgen)
+  })
+
+  it("You can do ticks whenever you want",()=>{
+    this.g.tick(0.03)
+    this.g.tick(0.03)
+    this.g.tick(0.03)
+    expect(true).toBeTruthy()
+  })
+
+  it("You are alive on first time", ()=>{
+    expect(this.g.isAlive()).toBeTruthy()
   })
 })
